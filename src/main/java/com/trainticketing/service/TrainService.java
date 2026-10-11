@@ -1,10 +1,10 @@
-package com.siemens.service;
+package com.trainticketing.service;
 
-import com.siemens.model.Booking;
-import com.siemens.model.Passenger;
-import com.siemens.model.Train;
-import com.siemens.repository.InMemoryDatabase;
-import com.siemens.repository.JsonDatabase;
+import com.trainticketing.model.Booking;
+import com.trainticketing.model.Passenger;
+import com.trainticketing.model.Train;
+import com.trainticketing.repository.InMemoryDatabase;
+import com.trainticketing.repository.JsonDatabase;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,8 +1,8 @@
-package com.siemens.repository;
+package com.trainticketing.repository;
 
-import com.siemens.model.Booking;
-import com.siemens.model.Route;
-import com.siemens.model.Train;
+import com.trainticketing.model.Booking;
+import com.trainticketing.model.Route;
+import com.trainticketing.model.Train;
 
 import java.util.ArrayList;
 import java.util.List;

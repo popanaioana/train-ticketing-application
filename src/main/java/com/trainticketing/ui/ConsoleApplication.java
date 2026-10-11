@@ -1,14 +1,17 @@
-package com.siemens.ui;
+package com.trainticketing.ui;
 
-import com.siemens.model.Passenger;
-import com.siemens.repository.InMemoryDatabase;
-import com.siemens.repository.JsonDatabase;
-import com.siemens.service.BookingService;
-import com.siemens.service.DataSeeder;
-import com.siemens.service.EmailService;
-import com.siemens.service.RouteService;
-import com.siemens.service.SearchService;
-import com.siemens.service.TrainService;
+import com.trainticketing.model.Passenger;
+import com.trainticketing.repository.DatabaseException;
+import com.trainticketing.repository.InMemoryDatabase;
+import com.trainticketing.repository.JsonDatabase;
+import com.trainticketing.service.BookingService;
+import com.trainticketing.service.DataSeeder;
+import com.trainticketing.service.EmailService;
+import com.trainticketing.service.RouteService;
+import com.trainticketing.service.SearchService;
+import com.trainticketing.service.TrainService;
+import com.trainticketing.model.Booking;
+import com.trainticketing.service.BookingException;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -29,8 +32,13 @@ public class ConsoleApplication {
     }
 
     public void start() {
-        initializeApplication();
-        runMainMenu();
+        try {
+            initializeApplication();
+            runMainMenu();
+        } catch (DatabaseException e) {
+            System.err.println("Database error: " + e.getMessage());
+            System.err.println("Your existing data files have not been intentionally reset.");
+        }
     }
 
     private void initializeApplication() {
@@ -109,7 +117,13 @@ public class ConsoleApplication {
         String fullName = inputReader.readString("Passenger full name: ");
         String email = inputReader.readString("Passenger email: ");
         Passenger passenger = new Passenger(fullName, email);
-        bookingService.bookTickets(departureStation, arrivalStation, List.of(passenger));
+        try {
+            Booking booking = bookingService.bookTickets(departureStation, arrivalStation, List.of(passenger));
+            System.out.println("Booking completed successfully.");
+            System.out.println(booking);
+        } catch (BookingException e) {
+            System.out.println("Booking failed: " + e.getMessage());
+        }
     }
 
     private void bookMultipleTickets() {
@@ -126,13 +140,17 @@ public class ConsoleApplication {
         for (int i = 1; i <= numberOfPassengers; i++) {
             System.out.println();
             System.out.println("Passenger " + i + ":");
-
             String fullName = inputReader.readString("Full name: ");
             String email = inputReader.readString("Email: ");
-
             passengers.add(new Passenger(fullName, email));
         }
-        bookingService.bookTickets(departureStation, arrivalStation, passengers);
+        try {
+            Booking booking = bookingService.bookTickets(departureStation, arrivalStation, passengers);
+            System.out.println("Booking completed successfully.");
+            System.out.println(booking);
+        } catch (BookingException e) {
+            System.out.println("Booking failed: " + e.getMessage());
+        }
     }
 
     private void manageTrainsMenu() {

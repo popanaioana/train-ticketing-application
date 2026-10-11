@@ -1,6 +1,6 @@
-package com.siemens;
+package com.trainticketing;
 
-import com.siemens.ui.ConsoleApplication;
+import com.trainticketing.ui.ConsoleApplication;
 
 public class Main {
     public static void main(String[] args) {

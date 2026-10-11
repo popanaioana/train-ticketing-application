@@ -1,11 +1,11 @@
-package com.siemens.service;
+package com.trainticketing.service;
 
-import com.siemens.model.Route;
-import com.siemens.model.RouteStop;
-import com.siemens.model.Station;
-import com.siemens.model.Train;
-import com.siemens.repository.InMemoryDatabase;
-import com.siemens.repository.JsonDatabase;
+import com.trainticketing.model.Route;
+import com.trainticketing.model.RouteStop;
+import com.trainticketing.model.Station;
+import com.trainticketing.model.Train;
+import com.trainticketing.repository.InMemoryDatabase;
+import com.trainticketing.repository.JsonDatabase;
 
 import java.time.LocalTime;
 import java.util.Optional;

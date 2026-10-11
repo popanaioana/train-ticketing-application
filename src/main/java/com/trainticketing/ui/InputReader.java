@@ -1,4 +1,4 @@
-package com.siemens.ui;
+package com.trainticketing.ui;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeParseException;

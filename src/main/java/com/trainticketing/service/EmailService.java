@@ -1,8 +1,8 @@
-package com.siemens.service;
+package com.trainticketing.service;
 
-import com.siemens.model.Booking;
-import com.siemens.model.Passenger;
-import com.siemens.model.Train;
+import com.trainticketing.model.Booking;
+import com.trainticketing.model.Passenger;
+import com.trainticketing.model.Train;
 
 public class EmailService {
 

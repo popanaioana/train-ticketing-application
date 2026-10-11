@@ -1,4 +1,4 @@
-package com.siemens.model;
+package com.trainticketing.model;
 
 public enum BookingStatus {
     CONFIRMED,
